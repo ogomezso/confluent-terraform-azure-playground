@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: ./
+       working-directory: ./private-link/confluent
    steps:
      - name: Checkout the repository to the runner
        uses: actions/checkout@v2
@@ -36,12 +36,10 @@ jobs:
        run: terraform validate
      - name: Terraform plan
        id: plan
-       if: github.event_name == 'pull_request'
-       run: terraform plan -no-color -var-file="env/cluster.tfvars" -input=false
+       run: terraform plan -input=false
        continue-on-error: true
      - name: Terraform Plan Status
        if: steps.plan.outcome == 'failure'
        run: exit 1
      - name: Terraform Apply
-       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-       run: terraform apply -var-file="env/cluster.tfvars" -auto-approve -input=false
+       run: terraform apply -auto-approve -input=false
