@@ -100,7 +100,6 @@ resource "confluent_api_key" "app-manager-kafka-api-key" {
 provider "azurerm" {
   features {
   }
-  use_oidc = true
 }
 
 locals {
