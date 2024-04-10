@@ -23,18 +23,3 @@ variable "subscription_id" {
   type        = string
 }
 
-variable "client_id" {
-  description = "The ID of the Client on Azure"
-  type        = string
-}
-
-variable "client_secret" {
-  description = "The Secret of the Client on Azure"
-  type        = string
-}
-
-variable "tenant_id" {
-  description = "The Azure tenant ID in which Subscription exists"
-  type        = string
-}
-

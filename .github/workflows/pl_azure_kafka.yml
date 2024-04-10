@@ -10,15 +10,21 @@ on:
          options:
            - create
            - destroy
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+#These environment variables are used by the terraform azure provider to setup OIDD authenticate.
 env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
  CONFLUENT_CLOUD_API_KEY: ${{ secrets.CCLOUD_API_KEY }}
  CONFLUENT_CLOUD_API_SECRET: ${{ secrets.CCLOUD_API_SECRET }}
- TF_VAR_tenant_id: ${{ secrets.AZ_TENANT_ID }}
+ ARM_CLIENT_ID: ${{ secrets.AZ_CLIENT_ID }}
+ ARM_SUBSCRIPTION_ID: ${{ secrets.AZ_SUBSCRIPTION_ID }}
+ ARM_TENANT_ID: ${{ secrets.AZ_TENANT_ID }}
  TF_VAR_subscription_id: ${{ secrets.AZ_SUBSCRIPTION_ID }}
- TF_VAR_client_id: ${{ secrets.AZ_CLIENT_ID }}
- TF_VAR_client_secret: ${{ secrets.AZ_CLIENT_SECRET }}
 jobs:
  terraform:
    name: "Terraform Infrastructure Change Management"
