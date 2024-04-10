@@ -1,5 +1,15 @@
 name: "Kafka Cluster Creation"
-on: workflow_dispatch
+on:
+   workflow_dispatch:
+     inputs:
+       action:
+         description: 'Action to perform'
+         required: true
+         default: 'create'
+         type: choice
+         options:
+           - create
+           - destroy
 env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
@@ -28,12 +38,18 @@ jobs:
      - name: Terraform init
        id: init
        run: terraform init
+       if: inputs.action == 'create'
      - name: Terraform plan
        id: plan
        run: terraform plan -input=false
+       if: inputs.action == 'create'
        continue-on-error: true
      - name: Terraform Plan Status
        if: steps.plan.outcome == 'failure'
        run: exit 1
      - name: Terraform Apply
+       if: inputs.action == 'create'
        run: terraform apply -auto-approve -input=false
+     - name: Terraform Destroy
+       if: inputs.action == 'destroy'
+       run: terraform destroy -auto-approve -input=false
