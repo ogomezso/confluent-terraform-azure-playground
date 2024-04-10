@@ -4,6 +4,6 @@ terraform {
     storage_account_name = "ogomezsostorage"
     container_name       = "pltfstate"
     key                  = "terraform.tfstate"
-    use_oidc = true
+    use_msi              = true
   }
 }
