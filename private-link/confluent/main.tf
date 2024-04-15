@@ -1,5 +1,5 @@
 resource "confluent_environment" "env" {
-  display_name = "ogomez_azure_pl"
+  display_name = var.env_name
 }
 
 resource "confluent_schema_registry_cluster" "schema_registry" {
@@ -8,14 +8,10 @@ resource "confluent_schema_registry_cluster" "schema_registry" {
   environment {
     id = confluent_environment.env.id
   }
-
-  region {
-    id = "sgreg-9"
-  }
 }
 
 resource "confluent_network" "private-link" {
-  display_name     = "Private Link Network"
+  display_name     = var.cc_network_name
   cloud            = "AZURE"
   region           = var.region
   connection_types = ["PRIVATELINK"]
@@ -42,12 +38,12 @@ resource "confluent_private_link_access" "azure" {
 
 
 resource "confluent_kafka_cluster" "kafka-cluster" {
-  display_name = "decicated_PL"
-  availability = "SINGLE_ZONE"
+  display_name = var.cc_kafka_cluster_name
+  availability = var.cc_availability
   cloud        = confluent_network.private-link.cloud
   region       = confluent_network.private-link.region
   dedicated {
-    cku = 2
+    cku = var.cc_cku
   }
   environment {
     id = confluent_environment.env.id

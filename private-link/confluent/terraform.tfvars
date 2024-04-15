@@ -16,3 +16,14 @@ subnet_name_by_zone = {
   "2" = "default",
   "3" = "default",
 }
+
+env_name = "ogomez_azure_pl"
+
+cc_network_name = "ogomez_azure_pl_nwk"
+
+cc_kafka_cluster_name = "azure_dedicated_pl"
+
+cc_cku = 2
+
+cc_availability = "SINGLE_ZONE"
+

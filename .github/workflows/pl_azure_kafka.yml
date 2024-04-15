@@ -1,4 +1,4 @@
-name: "Kafka Cluster Creation"
+name: "Kafka Cluster Management"
 on:
    workflow_dispatch:
      inputs:
@@ -14,8 +14,6 @@ permissions:
   id-token: write
   contents: read
   pull-requests: write
-
-#These environment variables are used by the terraform azure provider to setup OIDD authenticate.
 env:
  # verbosity setting for Terraform logs
  TF_LOG: INFO
@@ -34,7 +32,6 @@ jobs:
    defaults:
      run:
        shell: bash
-       # We keep Terraform files in the terraform directory.
        working-directory: ./private-link/confluent
    steps:
      - name: Checkout the repository to the runner

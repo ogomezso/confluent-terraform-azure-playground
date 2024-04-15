@@ -23,3 +23,31 @@ variable "subscription_id" {
   type        = string
 }
 
+variable "env_name" {
+  description = "Confluent Cloud Environment display name"
+  type        = string
+}
+
+variable "cc_network_name" {
+  description = "Confluent Cloud Network display name"
+  type        = string
+}
+
+variable "cc_kafka_cluster_name" {
+  description = "Confluent Cloud Kafka Cluster display name"
+  type        = string
+}
+
+variable "cc_cku" {
+  description = "Confluent Cloud Kafka Cluster number of CKUs"
+  type        = number
+}
+
+variable "cc_availability" {
+  description = "Confluent Cloud Kafka Cluster display name"
+  type        = string
+  validation {
+    condition = (contains(["SINGLE_ZONE", "MULTI_ZONE"], var.cc_availability))
+    error_message = "Not valid value, only SINGLE_ZONE or MULTI_ZONE are valid ones"
+  }
+}
