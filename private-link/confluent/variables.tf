@@ -23,9 +23,22 @@ variable "subscription_id" {
   type        = string
 }
 
-variable "env_name" {
+variable "cc_env_name" {
   description = "Confluent Cloud Environment display name"
   type        = string
+}
+
+variable "cc_sr_package" {
+  type    = string
+  default = "ESSENTIALS"
+  validation {
+    condition = (
+    contains(["ESSENTIALS", "ADVANCED"], var.cc_sr_package)
+    )
+    error_message = <<EOT
+sr_package => ESSENTIALS, ADVANCED
+    EOT
+  }
 }
 
 variable "cc_network_name" {

@@ -17,7 +17,9 @@ subnet_name_by_zone = {
   "3" = "default",
 }
 
-env_name = "ogomez_azure_pl"
+cc_env_name = "ogomez_azure_pl"
+
+cc_sr_package = "ADVANCED"
 
 cc_network_name = "ogomez_azure_pl_nwk"
 

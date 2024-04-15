@@ -38,6 +38,7 @@ No modules.
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 | [azurerm_subnet.subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subnet) | data source |
 | [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
+| [confluent_schema_registry_region.sr_region](https://registry.terraform.io/providers/confluentinc/confluent/latest/docs/data-sources/schema_registry_region) | data source |
 
 ## Inputs
 
@@ -45,9 +46,10 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cc_availability"></a> [cc\_availability](#input\_cc\_availability) | Confluent Cloud Kafka Cluster display name | `string` | n/a | yes |
 | <a name="input_cc_cku"></a> [cc\_cku](#input\_cc\_cku) | Confluent Cloud Kafka Cluster number of CKUs | `number` | n/a | yes |
+| <a name="input_cc_env_name"></a> [cc\_env\_name](#input\_cc\_env\_name) | Confluent Cloud Environment display name | `string` | n/a | yes |
 | <a name="input_cc_kafka_cluster_name"></a> [cc\_kafka\_cluster\_name](#input\_cc\_kafka\_cluster\_name) | Confluent Cloud Kafka Cluster display name | `string` | n/a | yes |
 | <a name="input_cc_network_name"></a> [cc\_network\_name](#input\_cc\_network\_name) | Confluent Cloud Network display name | `string` | n/a | yes |
-| <a name="input_env_name"></a> [env\_name](#input\_env\_name) | Confluent Cloud Environment display name | `string` | n/a | yes |
+| <a name="input_cc_sr_package"></a> [cc\_sr\_package](#input\_cc\_sr\_package) | n/a | `string` | `"ESSENTIALS"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region of your Azure VNet | `string` | n/a | yes |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | The name of the Azure Resource Group that the virtual network belongs to | `string` | n/a | yes |
 | <a name="input_subnet_name_by_zone"></a> [subnet\_name\_by\_zone](#input\_subnet\_name\_by\_zone) | A map of Zone to Subnet Name | `map(string)` | n/a | yes |
@@ -59,5 +61,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_resource-ids"></a> [resource-ids](#output\_resource-ids) | n/a |
-
 <!-- END_TF_DOCS -->
