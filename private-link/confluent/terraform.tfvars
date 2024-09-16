@@ -12,18 +12,18 @@ region = "westeurope"
 # A map of Zone to Subnet Name
 # On Azure, zones are Confluent-chosen names (for example, `1`, `2`, `3`) since Azure does not have universal zone identifiers.
 subnet_name_by_zone = {
-  "inditex_pl_1" = "default",
-  "inditex_pl_2" = "default",
-  "inditex_pl_3" = "default",
+  "ogomezso_pl_1" = "default",
+  "ogomezso_pl_2" = "default",
+  "ogomezso_pl_3" = "default",
 }
 
-cc_env_name = "ogomez_inditex_mqtt"
+cc_env_name = "ogomezso_azure_pl"
 
 cc_sr_package = "ADVANCED"
 
-cc_network_name = "ogomez_inditex_mqtt_nwk"
+cc_network_name = "ogomez_cc_pl"
 
-cc_kafka_cluster_name = "ogomez_inditex_mqtt"
+cc_kafka_cluster_name = "ogomez_azure_pl"
 
 cc_cku = 2
 
