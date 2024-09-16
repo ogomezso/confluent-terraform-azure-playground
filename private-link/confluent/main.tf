@@ -2,12 +2,6 @@ resource "confluent_environment" "env" {
   display_name = var.cc_env_name
 }
 
-data "confluent_schema_registry_region" "sr_region" {
-  cloud   = "AZURE"
-  region  = var.region
-  package = var.cc_sr_package
-}
-
 resource "confluent_schema_registry_cluster" "schema_registry" {
   package = var.cc_sr_package
 
