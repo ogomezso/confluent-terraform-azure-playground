@@ -1,16 +1,7 @@
 resource "confluent_environment" "env" {
   display_name = var.cc_env_name
-}
-
-resource "confluent_schema_registry_cluster" "schema_registry" {
-  package = var.cc_sr_package
-
-  environment {
-    id = confluent_environment.env.id
-  }
-
-  region {
-    id = data.confluent_schema_registry_region.sr_region.id
+  stream_governance {
+    package = "ADVANCED"
   }
 }
 
